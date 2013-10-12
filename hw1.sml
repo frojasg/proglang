@@ -33,4 +33,13 @@ fun get_nth(words:string list, n:int) =
     aux_get_nth(words, 1)
   end
 
+fun date_to_string(date: (int * int * int)) =
+  let val months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    val day = Int.toString(#3 date)
+    val month = get_nth(months, #2 date)
+    val year = Int.toString(#1 date)
+  in
+    month ^ " " ^ day ^ ", " ^ year
+  end
+
 
