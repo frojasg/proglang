@@ -24,4 +24,13 @@ fun dates_in_months(dates: (int * int * int) list, months: int list) =
   then []
   else dates_in_month(dates, hd(months)) @ dates_in_months(dates, tl(months));
 
+fun get_nth(words:string list, n:int) =
+  let fun aux_get_nth(words: string list, accu:int) =
+    if n = accu
+    then hd(words)
+    else aux_get_nth(tl(words), accu + 1)
+  in
+    aux_get_nth(words, 1)
+  end
+
 
