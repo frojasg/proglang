@@ -42,4 +42,11 @@ fun date_to_string(date: (int * int * int)) =
     month ^ " " ^ day ^ ", " ^ year
   end
 
-
+fun number_before_reaching_sum(sum: int, numbers: int list) =
+  let fun sum_list(accu: int, index: int, numbers: int list) =
+    if accu + hd(numbers) < sum
+    then sum_list(accu + hd(numbers), index + 1, tl(numbers))
+    else index
+  in
+      sum_list(0, 0, numbers)
+  end
