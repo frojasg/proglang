@@ -80,3 +80,16 @@ fun oldest(dates: (int * int * int) list) =
     in
       SOME (min_date dates)
     end
+
+fun number_in_months_challenge(dates: (int * int * int) list, months: int list) =
+  let fun delete(numbers: int list, n: int) =
+    if null numbers
+    then []
+    else if hd(numbers) = n then delete(tl(numbers), n) else hd(numbers) :: delete(tl(numbers), n)
+  fun remove_duplicate(numbers: int list) =
+    if null numbers
+    then []
+    else hd(numbers) :: remove_duplicate(delete(tl(numbers), hd(numbers)))
+  in
+   number_in_months(dates, remove_duplicate(months))
+  end
