@@ -1,6 +1,7 @@
 
 fun is_older(newest: (int * int * int), older: (int * int * int)) = 
-   (#1 older) > (#1 newest) andalso (#2 older) > (#2 newest) andalso (#3 older) > (#3 newest);
+  (#1 older) > (#1 newest) orelse ((#1 older) >= (#1 newest) andalso (#2 older) > (#2 newest)) orelse
+  ((#1 older) >= (#1 newest) andalso (#2 older) >= (#2 newest) andalso (#3 older) > (#3 newest));
 
 fun number_in_month(dates: (int * int * int) list, month: int) = 
   if null dates
