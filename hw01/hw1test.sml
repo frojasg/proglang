@@ -31,3 +31,8 @@ val test11 = oldest([(2012,2,28),(2011,3,31),(2011,4,28)]) = SOME (2011,3,31)
 val test12  = number_in_months_challenge([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4,2]) = 3
 
 val test12_2 = dates_in_months_challenge([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4,2]) = [(2012,2,28),(2011,3,31),(2011,4,28)]
+
+val test13 = reasonable_date((2013, 10, 13)) = true
+val test13_2 = reasonable_date((2012, 2, 29)) = true
+val test13_3 = reasonable_date((0, 14, 1)) = false
+val test13_4 = reasonable_date((2013, 2, 28)) = true

@@ -96,3 +96,21 @@ fun number_in_months_challenge(dates: (int * int * int) list, months: int list) 
 
 fun dates_in_months_challenge(dates: (int * int * int) list, months: int list) =
   dates_in_months(dates, remove_duplicate(months))
+
+fun reasonable_date(date: (int * int * int)) =
+  let val year = #1 date
+  val month = #2 date
+  val months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  val day = #3 date
+  fun valid_year(year) = year > 0
+  fun valid_month(month) = month > 0 andalso month <= 12
+  fun leap_year(year) =
+      ((year mod 400) = 0 orelse (year mod 4) = 0) andalso (year mod 100) <> 100
+  fun get_nth_list(numbers: int list, n: int, accu: int) =
+    if n = accu
+    then hd(numbers)
+    else get_nth_list(tl(numbers), n, accu + 1)
+  fun valid_day(day) = (day > 0 andalso day <= get_nth_list(months, month, 1)) orelse (month = 2 andalso day = 29)
+  in
+    valid_year(year) andalso valid_month(month) andalso valid_day(day)
+  end
