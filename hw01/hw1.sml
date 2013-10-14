@@ -105,12 +105,12 @@ fun reasonable_date(date: (int * int * int)) =
   fun valid_year(year) = year > 0
   fun valid_month(month) = month > 0 andalso month <= 12
   fun leap_year(year) =
-      ((year mod 400) = 0 orelse (year mod 4) = 0) andalso (year mod 100) <> 100
+    (year mod 4) = 0 andalso ((year mod 100) <> 0 orelse (year mod 400) = 0)
   fun get_nth_list(numbers: int list, n: int, accu: int) =
     if n = accu
     then hd(numbers)
     else get_nth_list(tl(numbers), n, accu + 1)
-  fun valid_day(day) = (day > 0 andalso day <= get_nth_list(months, month, 1)) orelse (month = 2 andalso day = 29)
+  fun valid_day(day) = (day > 0 andalso day <= get_nth_list(months, month, 1)) orelse (month = 2 andalso day = 29 andalso leap_year(year))
   in
     valid_year(year) andalso valid_month(month) andalso valid_day(day)
   end
