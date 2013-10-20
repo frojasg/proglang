@@ -28,6 +28,19 @@ fun get_substitutions1(subs: string list list, s: string) =
       | SOME y => if x = y then get_substitutions1(xs', s)
         else y @ get_substitutions1(xs', s)
 
+fun get_substitutions2(subss: string list list, s: string) =
+  let fun substitution_inc(subs: string list list, inc: string list) =
+    case subs of
+        [] => inc
+      | x :: xs' => case all_except_option(s, x) of
+          NONE => substitution_inc(xs', inc)
+        | SOME y => if x = y then substitution_inc(xs', inc)
+          else substitution_inc(xs', ( inc @ y) )
+  in
+    substitution_inc(subss, [])
+  end
+
+
 (* you may assume that Num is always used with values 2, 3, ..., 10
    though it will not really come up *)
 datatype suit = Clubs | Diamonds | Hearts | Spades
