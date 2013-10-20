@@ -15,3 +15,7 @@ val test4_1 = similar_names([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie
 
 val test5_1 = card_color(Hearts, Num(2)) = Red
 val test5_2 = card_color(Spades, Num(2)) = Black
+
+val test6_1 = card_value(Spades, Num(5)) = 5
+val test6_2 = card_value(Spades, King) = 10
+val test6_3 = card_value(Spades, Ace) = 11

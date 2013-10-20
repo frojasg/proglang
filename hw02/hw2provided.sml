@@ -68,3 +68,9 @@ fun card_color(s: suit, r: rank) =
     | Clubs => Black
     | Diamonds => Red
     | Hearts => Red
+
+fun card_value(s: suit, r: rank) =
+  case r of
+    Num i => i
+   | Ace => 11
+   |  _ => 10
