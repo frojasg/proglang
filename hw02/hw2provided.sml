@@ -61,3 +61,10 @@ datatype move = Discard of card | Draw
 exception IllegalMove
 
 (* put your solutions for problem 2 here *)
+
+fun card_color(s: suit, r: rank) =
+   case s of
+     Spades => Black
+    | Clubs => Black
+    | Diamonds => Red
+    | Hearts => Red
