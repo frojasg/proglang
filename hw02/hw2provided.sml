@@ -41,6 +41,14 @@ fun get_substitutions2(subss: string list list, s: string) =
   end
 
 
+fun similar_names(subs: string list list, {first=f,middle=m,last=l}) =
+  let fun convert(names: string list) = case names of
+      [] => []
+    | x :: xs' => {first=x, middle=m, last=l} :: convert(xs')
+  in
+    convert(f :: get_substitutions2(subs, f))
+end
+
 (* you may assume that Num is always used with values 2, 3, ..., 10
    though it will not really come up *)
 datatype suit = Clubs | Diamonds | Hearts | Spades
