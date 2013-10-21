@@ -86,3 +86,9 @@ fun remove_card(cards: card list, c: card, ex) =
   in
    remove(cards, 0)
   end
+
+fun all_same_color(cards: card list) =
+  case cards of
+      [] => true
+   | _::[] => true
+   | head::(neck::rest) => card_color(head) = card_color(neck) andalso all_same_color(rest)

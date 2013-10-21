@@ -23,3 +23,6 @@ val test6_3 = card_value(Spades, Ace) = 11
 val test7_1 = remove_card([(Hearts, Num 5), (Spades, Ace)], (Spades, Ace), IllegalMove) = [(Hearts, Num 5)]
 (*val test7_2 = remove_card([(Hearts, Num 5), (Spades, Ace)], (Spades, King), IllegalMove) = IllegalMove*)
 val test7_1 = remove_card([(Hearts, Num 5), (Spades, Ace), (Hearts, Num 5)], (Hearts, Num 5), IllegalMove) = [(Spades, Ace), (Hearts, Num 5)]
+
+val test8_1 = all_same_color([(Hearts, Num 5), (Spades, Ace)]) = false
+val test8_2 = all_same_color([(Clubs, Num 5), (Spades, Ace)]) = true
