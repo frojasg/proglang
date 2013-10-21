@@ -14,10 +14,15 @@ fun all_except_option(s: string, words: string list) =
        | x :: xs' => if same_string(s, x)
        then all_except(xs')
        else x :: all_except(xs')
+    fun find(words: string list) =
+       case words of
+           [] => false
+         | x :: xs' => if same_string(s,x) then true
+           else false orelse find(xs')
   in
-    case all_except(words) of
-        [] => NONE
-      | x => SOME x
+    case (find(words), all_except(words)) of
+        (false, _) => NONE
+      | (true, x) => SOME x
    end
 
 fun get_substitutions1(subs: string list list, s: string) =

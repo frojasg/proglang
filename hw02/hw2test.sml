@@ -1,7 +1,9 @@
 
 val test1_1 = all_except_option("a", ["a", "b"]) = SOME ["b"]
 
-val test1_2 = all_except_option("a", ["a"]) = NONE
+val test1_2 = all_except_option("a", ["a"]) = SOME []
+
+val test1_3 = all_except_option("b", ["a"]) = NONE
 
 val test2_1 = get_substitutions1([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]], "Fred") =  ["Fredrick","Freddie","F"]
 
