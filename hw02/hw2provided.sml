@@ -92,3 +92,12 @@ fun all_same_color(cards: card list) =
       [] => true
    | _::[] => true
    | head::(neck::rest) => card_color(head) = card_color(neck) andalso all_same_color(rest)
+
+fun sum_cards(cards: card list) =
+  let fun sum_cards_aux(cards: card list, acc: int) =
+    case cards of
+        [] => acc
+     | x::xs' => sum_cards_aux(xs', acc + card_value(x))
+  in
+    sum_cards_aux(cards, 0)
+  end
