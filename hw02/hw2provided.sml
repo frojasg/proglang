@@ -96,7 +96,7 @@ fun all_same_color(cards: card list) =
   case cards of
       [] => true
    | _::[] => true
-   | head::(neck::rest) => card_color(head) = card_color(neck) andalso all_same_color(rest)
+   | head::(neck::rest) => card_color(head) = card_color(neck) andalso all_same_color(neck::rest)
 
 fun sum_cards(cards: card list) =
   let fun sum_cards_aux(cards: card list, acc: int) =
