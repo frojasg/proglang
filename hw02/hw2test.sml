@@ -33,3 +33,7 @@ val test10_1 = score([(Hearts, Num 5), (Spades, Ace)], 16) = 0
 val test10_2 = score([(Hearts, Num 5), (Spades, Ace)], 13) = 9
 val test10_3 = score([(Hearts, Num 5), (Spades, Ace)], 19) = 3
 val test10_4 = score([(Hearts, Num 5), (Diamonds, Ace)], 13) = 4
+
+val test11_1 = officiate([(Hearts, Num 5), (Spades, Ace)], [Draw, Draw], 16) = 0
+val test11_2 = officiate([(Hearts, Num 5), (Spades, Ace)], [Draw, Discard(Hearts, Num 5), Draw], 16) = 2
+val test11_3 = officiate([(Hearts, Num 5), (Spades, Ace)], [Draw, Discard(Hearts, Num 5), Draw], 9) = 3
