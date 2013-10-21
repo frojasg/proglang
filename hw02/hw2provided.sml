@@ -74,3 +74,15 @@ fun card_value(s: suit, r: rank) =
     Num i => i
    | Ace => 11
    |  _ => 10
+
+fun remove_card(cards: card list, c: card, ex) =
+  let fun remove(cards: card list, count: int) =
+    case (count, cards) of
+       (0, []) => raise ex
+     | (1, []) => []
+     | (_, x :: xs') => if x = c andalso count < 1 then remove(xs', count + 1)
+                   else x :: remove(xs', count)
+     | (_,_) => []
+  in
+   remove(cards, 0)
+  end
