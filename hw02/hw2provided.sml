@@ -101,3 +101,11 @@ fun sum_cards(cards: card list) =
   in
     sum_cards_aux(cards, 0)
   end
+
+fun score(cards: card list, goal: int) =
+  let val score = sum_cards(cards)
+      val all_cards_same_color = all_same_color(cards)
+      val preliminar = if score > goal then (score - goal) * 3 else goal - score
+  in
+    if all_cards_same_color then preliminar div 2 else preliminar
+  end
