@@ -38,3 +38,6 @@ datatype typ = Anything
 
 fun only_capitals(words: string list) =
   List.filter (fn x => Char.isUpper(String.sub(x, 0))) words
+
+fun longest_string1(words: string list) =
+  List.foldl (fn (biggest: string, word:string) => if(String.size biggest <= String.size word) then word else biggest) "" words
