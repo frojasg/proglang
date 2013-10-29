@@ -56,3 +56,6 @@ fun longest_string4(words: string list) =
 
 fun longest_capitalized(words: string list) =
   (longest_string2 o only_capitals) words
+
+fun rev_string(word: string) =
+  (String.implode o List.rev o String.explode) word

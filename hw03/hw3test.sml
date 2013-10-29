@@ -10,3 +10,5 @@ val test4_1 = longest_string3(["ola", "q", "ase"]) = "ola"
 val test4_2 = longest_string4(["ola", "q", "ase"]) = "ase"
 
 val test5 = longest_capitalized(["Ola", "Q", "ase"]) = "Ola"
+
+val test6 = rev_string("xita miller") = "rellim atix"
