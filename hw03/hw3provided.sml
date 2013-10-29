@@ -53,3 +53,6 @@ fun longest_string3(words: string list) =
 
 fun longest_string4(words: string list) =
   longest_string_helper (fn (x, y) => x < y) words
+
+fun longest_capitalized(words: string list) =
+  (longest_string2 o only_capitals) words
