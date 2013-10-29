@@ -26,3 +26,7 @@ val test9b_4 = count_wild_and_variable_lengths (TupleP [Wildcard, TupleP [Wildca
 val test9b_5 = count_wild_and_variable_lengths(TupleP [ConstP 10, TupleP [Variable "str"], ConstP 5]) = 3
 
 val test9c_5 = count_some_var("str", TupleP [ConstP 10, TupleP [Variable "str"], ConstP 5]) = 1;
+
+val test10_1 = check_pat (TupleP [ConstP 10, TupleP [Variable "str"], ConstP 5])
+
+val test10_2 = check_pat (TupleP [ConstP 10, TupleP [Variable "str"], Variable "str"]) = false

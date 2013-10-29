@@ -84,3 +84,20 @@ fun count_wildcards(p: pattern) = g (fn x => 1) (fn x => 0) p
 fun count_wild_and_variable_lengths(p: pattern) = g (fn x => 1) (fn x => String.size x) p
 
 fun count_some_var(s:string, p: pattern) = g (fn x => 0) (fn x => if x=s then 1 else 0) p
+
+
+fun get_vars(p:pattern) =
+  case p of
+      Wildcard		=> []
+    | Variable x 	=> [x]
+    | TupleP ps		=> List.foldl (fn (r, i) => (get_vars(r)) @ i ) [] ps
+    | ConstructorP(_, p) => get_vars p
+    | _		      	=> []
+
+
+fun check_pat(p:pattern) =
+  let fun dup(v: string list) =
+    List.exists (fn x => List.length(List.filter (fn y => y = x) v) > 1) v
+  in
+     not ((dup o get_vars) p)
+  end
