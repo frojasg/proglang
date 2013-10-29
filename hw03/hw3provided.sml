@@ -59,3 +59,28 @@ fun longest_capitalized(words: string list) =
 
 fun rev_string(word: string) =
   (String.implode o List.rev o String.explode) word
+
+exception NoAnswer
+
+fun first_answer f q = case q of
+                 [] => raise NoAnswer
+              |  x::xs => case f(x) of
+                       NONE => first_answer f xs
+                     | SOME v => v
+
+fun all_answers f q =
+    let fun helper q1 acc = case q1 of
+            [] => SOME acc
+         | x :: xs => case f(x) of
+                        NONE => NONE
+                     | SOME v => helper xs  (v @ acc)
+    in
+      helper q []
+end
+
+
+fun count_wildcards(p: pattern) = g (fn x => 1) (fn x => 0) p
+
+fun count_wild_and_variable_lengths(p: pattern) = g (fn x => 1) (fn x => String.size x) p
+
+fun count_some_var(s:string, p: pattern) = g (fn x => 0) (fn x => if x=s then 1 else 0) p
