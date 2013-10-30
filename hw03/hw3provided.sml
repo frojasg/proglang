@@ -101,3 +101,13 @@ fun check_pat(p:pattern) =
   in
      not ((dup o get_vars) p)
   end
+
+fun match (_, Wildcard) = SOME []
+  | match (v, Variable s) = SOME [(s, v)]
+  | match (Unit, UnitP) = SOME []
+  | match (Const a, ConstP b) = if a = b then SOME [] else NONE
+  | match (Tuple vs, TupleP ps) = if List.length vs = List.length ps
+                                then all_answers match (ListPair.zip(vs, ps))
+                                else NONE
+  | match (Constructor (s2, v), ConstructorP (s1, p)) = if s1 = s2 then match (v, p) else NONE
+  | match _ = NONE
