@@ -30,3 +30,7 @@ val test9c_5 = count_some_var("str", TupleP [ConstP 10, TupleP [Variable "str"],
 val test10_1 = check_pat (TupleP [ConstP 10, TupleP [Variable "str"], ConstP 5])
 
 val test10_2 = check_pat (TupleP [ConstP 10, TupleP [Variable "str"], Variable "str"]) = false
+
+val test11 = match (Const(1), UnitP) = NONEx
+val test11_1 = match(Const 1, ConstP 1) = SOME[]
+val test11_2 = match(Unit, Variable "test") = SOME[("test", Unit)]
