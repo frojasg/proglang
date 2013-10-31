@@ -35,3 +35,5 @@ val test11 = match (Const(1), UnitP) = NONE
 val test11_1 = match(Const 1, ConstP 1) = SOME[]
 val test11_2 = match(Unit, Variable "test") = SOME[("test", Unit)]
 
+val test12 = first_match Unit [UnitP] = SOME []
+val test12_1= first_match (Const 1) [ConstP 1] = SOME []

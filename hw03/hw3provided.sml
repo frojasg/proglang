@@ -111,3 +111,7 @@ fun match (_, Wildcard) = SOME []
                                 else NONE
   | match (Constructor (s2, v), ConstructorP (s1, p)) = if s1 = s2 then match (v, p) else NONE
   | match _ = NONE
+
+fun first_match v p =
+  SOME (first_answer( fn x => match (v, x)) p)
+  handle NoAnswer => NONE
