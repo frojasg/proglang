@@ -22,8 +22,10 @@
 
 ;; Problem 1
 
-;; CHANGE (put your solutions here)
-
+(define (racketlist->mupllist xs)
+  (if (empty? xs)
+      (aunit)
+      (apair (car xs) (racketlist->mupllist (cdr xs)))))
 ;; Problem 2
 
 ;; lookup a variable in an environment
