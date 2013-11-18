@@ -80,7 +80,7 @@
                                 [params (cons (fun-formal function) p)]
                                 [body (fun-body function)]
                                 [new-env (if name
-                                             (cons (name c) (cons params env2))
+                                             (cons (cons name c) (cons params env2))
                                              (cons params env2))])
                            (eval-under-env body new-env))
                          (error "call applied to non-closure")))]
@@ -124,11 +124,18 @@
 
 ;; Problem 4
 
-(define mupl-map "CHANGE")
+(define mupl-map
+  (fun #f "f" (fun "map" "xs"
+                   (ifaunit (var "xs")
+                            (aunit)
+                            (apair (call (var "f") (fst (var "xs")))
+                                   (call (var "map") (snd (var "xs"))))))))
 
 (define mupl-mapAddN 
   (mlet "map" mupl-map
-        "CHANGE (notice map is now in MUPL scope)"))
+        (fun #f "arg" (call (var "map")
+                            (fun #f "addN" (add (var "addN") (var "arg")))))))
+
 
 ;; Challenge Problem
 
