@@ -4,8 +4,6 @@
 # part of your solution.
 
 class MyPiece < Piece
-  # The constant All_My_Pieces should be declared here
-  # class array holding all the pieces and their rotations
   All_My_Pieces = [[[[0, 0], [1, 0], [0, 1], [1, 1]]],
                    rotations([[0, 0], [-1, 0], [1, 0], [0, -1]]), # T
                    [[[0, 0], [-1, 0], [1, 0], [2, 0]], # long (only needs two)
@@ -20,14 +18,12 @@ class MyPiece < Piece
                    rotations([[0,0], [0,1], [1,0]]) #extra #3
                   ]
 
-  # your enhancements here
   def self.next_piece(board)
     MyPiece.new(All_My_Pieces.sample, board)
   end
 end
 
 class MyBoard < Board
-  # your enhancements here
 
   def initialize(game)
     super
