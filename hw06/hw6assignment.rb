@@ -56,7 +56,7 @@ class MyBoard < Board
   end
 
   def cheat
-    if @score > 100 && !self.cheated?
+    if @score >= 100 && !self.cheated?
       @score -= 100
       @cheated = true
     end
