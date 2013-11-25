@@ -21,6 +21,10 @@ class MyPiece < Piece
   def self.next_piece(board)
     MyPiece.new(All_My_Pieces.sample, board)
   end
+
+  def self.cheat_piece(board)
+    MyPiece.new([[[0, 0]]], board)
+  end
 end
 
 class MyBoard < Board
@@ -31,7 +35,12 @@ class MyBoard < Board
   end
 
   def next_piece
-    @current_block = MyPiece.next_piece(self)
+    if self.cheated?
+      @current_block = MyPiece.cheat_piece(self)
+      @cheated = false
+    else
+      @current_block = MyPiece.next_piece(self)
+    end
     @current_pos = nil
   end
 
@@ -46,6 +55,17 @@ class MyBoard < Board
     @delay = [@delay - 2, 80].max
   end
 
+  def cheat
+    if @score > 100 && !self.cheated?
+      @score -= 100
+      @cheated = true
+    end
+  end
+
+  def cheated?
+    @cheated ||= false
+    @cheated
+  end
 end
 
 class MyTetris < Tetris
@@ -60,8 +80,7 @@ class MyTetris < Tetris
 
   def key_bindings
     @root.bind('u', proc { 2.times { @board.rotate_clockwise } })
+    @root.bind('c', proc { @board.cheat })
     super
   end
 end
-
-
